@@ -1,0 +1,14 @@
+{
+    "asset_allocation": "[('S&P500', 0.6), ('Agg_Bond', 0.3), ('BTC', 0.1)]",
+    "asset_description": "{'S&P500': (0.09, 0.18), 'Agg_Bond': (0.04, 0.05), 'BTC': (0.45, 0.70), 'Cash': (0.02, 0.005)}",
+    "timeline": "{'current_age': 25, 'retirement_age': 65, 'end_age': 95}",
+    "contribution_timeline": "[10500, 11000, 11500, 12000, 12600, 13200, 14000, 14800,15600, 16500, 10500, 11000, 11500, 12000, 12600, 13200, 14000, 14800,15600, 16500]",
+    "income_path": "[105000, 110000, 115000, 121000, 127000, 133000, 140000, 147000, 154000, 162000]",
+    "expected_inflation": "0.025",
+    "risk_aversion": "3.5",
+    "hazard_rate": "[0.001, 0.0012, 0.0015, 0.0018, 0.0021, 0.0025, 0.003, 0.0035, 0.004, 0.005]",
+    "liquidity_events": "[{'age': 45, 'cost': 25000, 'label': 'College'}, {'age': 32, 'cost': 85000, 'label': 'House'}]",
+    "tax_drag": "{'taxable': 0.4, 'roth': 0.3, 'traditional_401k': 0.3}",
+    "economic_regime": "-0.02",
+    "debt_inventory": "[(15000, 0.07), (300000, 0.045)]"
+}
