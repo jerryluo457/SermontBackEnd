@@ -5,6 +5,8 @@ from input_loader import load_simulation_inputs
 
 # https://tinyurl.com/2kcedz9v Click this for more info
 
+#USE THIS VERSION!!!
+
 def get_value_at_t(data_list, t):
     """Helper to pad lists if the timeline is longer than the provided data."""
     if not data_list:
