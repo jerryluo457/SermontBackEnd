@@ -7,20 +7,40 @@ def get_value_at_t(data_list, t):
     """Helper to pad lists if the timeline is longer than the provided data."""
     if not data_list:
         return 0
-    return data_list[t] if t < len(data_list) else data_list[-1]
+    return data_list[t] if t < len(data_list) else 0 #If the list ends there we return 0 (assume no furthur contribution)
+    # data_list[-1]
 
 def calculate_portfolio_params(assets, asset_desc, economic_regime, expected_inflation, tax_drag):
     """Calculates the blended drift (mu) and volatility (sigma) of the portfolio."""
+    """The Wiener Process / GBM has two vital parameters: mu and sigma
+    
+    blended drift (mu) is the expected Brownian drift of the stochastic process. For example most financial
+    instruments like the S&P 500 has an expected upwards drift of about 8 to 10% per year.
+
+        Note that mu is influenced by expected inflation, 
+    
+    volatility (sigma) is present in all risky financial securities. They reflect prices that fluctuate even though it has
+    a tendency to drift upwards
+    """
+
+    #initialize them with zero then add more information to it from the provided JSON file.
     mu_p = 0.0
     var_p = 0.0
     
     for asset_name, weight in assets:
+        """
+        Going over all asset classes
+        """
         if asset_name in asset_desc:
+            print(asset_desc)
             mu_i, sigma_sq_i = asset_desc[asset_name]
+            #the expected return (raw drift) of the asset class
             mu_p += weight * mu_i
-            # Assuming 0 correlation for simplicity; add covariance matrix here later
+            # For now assume zero covariance, we will include the covariance matrix later to compute the
+            #true var_p
             var_p += (weight ** 2) * sigma_sq_i 
-            
+
+    #sigma_p is the STANDARD DEVIATION of the expected return.  
     sigma_p = np.sqrt(var_p)
     
     # Apply Economic Regime and Inflation to get REAL drift
